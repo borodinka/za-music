@@ -1,14 +1,23 @@
-import { ThemeProvider, styled } from "styled-components";
+import { ThemeProvider } from "styled-components";
 import { theme } from "./styles/Theme";
-
-const Title = styled.h1`
-  color: ${({ theme }) => theme.colors.primary};
-`;
+import {
+  ButtonText,
+  MainTitle,
+  SectionSubtitle,
+  SectionTitle,
+  SubText,
+  Text,
+} from "./components/ui/Typography";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Title>Hello</Title>
+      <MainTitle>Hello</MainTitle>
+      <SectionTitle>Hello</SectionTitle>
+      <SectionSubtitle>Hello</SectionSubtitle>
+      <Text>Hello</Text>
+      <SubText>Hello</SubText>
+      <ButtonText>Hello</ButtonText>
     </ThemeProvider>
   );
 }
