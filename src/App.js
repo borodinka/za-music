@@ -1,5 +1,5 @@
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/Theme";
+import { theme } from "styles/Theme";
 import {
   ButtonText,
   MainTitle,
@@ -7,8 +7,21 @@ import {
   SectionTitle,
   SubText,
   Text,
-} from "./components/ui/Typography";
-import { GlobalStyles } from "./styles/Global";
+} from "components/ui/Typography";
+import { GlobalStyles } from "styles/Global";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Heart,
+  Music,
+  Pause,
+  Play,
+  Search,
+  SkipLeft,
+  SkipRight,
+  Users,
+  Volume,
+} from "components/ui/Icons";
 
 function App() {
   return (
@@ -20,6 +33,18 @@ function App() {
       <Text>Hello</Text>
       <SubText>Hello</SubText>
       <ButtonText>Hello</ButtonText>
+      <br />
+      <Play />
+      <SkipLeft />
+      <SkipRight />
+      <Pause />
+      <Volume />
+      <Music />
+      <ArrowLeft />
+      <ArrowRight />
+      <Search />
+      <Heart />
+      <Users />
     </ThemeProvider>
   );
 }
