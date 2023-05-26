@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const Wrapper = styled.header`
   display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.header`
   height: 118px;
 `;
 
-export const LogoWrapper = styled.header`
+export const LogoWrapper = styled.div`
   display: flex;
   gap: 20px;
 `;

@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 import { ReactComponent as PlayIcon } from "assets/icons/play.svg";
 import { ReactComponent as SkipIcon } from "assets/icons/skip.svg";
 import { ReactComponent as PauseIcon } from "assets/icons/pause.svg";

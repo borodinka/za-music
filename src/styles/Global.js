@@ -3,13 +3,15 @@ import { createGlobalStyle } from "styled-components";
 const styled = { createGlobalStyle };
 
 export const GlobalStyles = styled.createGlobalStyle`
-  /* Box sixing rules */
+  /* Box sizing rules */
+  *,
   *::before,
   *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
   }
+
   body {
     min-height: 100vh;
     font-family: ${({ theme }) => theme.fonts.poppins}, sans-serif;

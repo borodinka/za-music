@@ -14,7 +14,7 @@ export const theme = {
   },
   fontWeights: {
     bold: 600,
-    semiBold: 500,
+    semibold: 500,
     normal: 400,
   },
 };

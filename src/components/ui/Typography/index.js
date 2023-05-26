@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const MainTitle = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins}, sans-serif;
@@ -23,7 +23,7 @@ export const SectionSubtitle = styled.h3`
 
 export const Text = styled.span`
   font-family: ${({ theme }) => theme.fonts.inter}, sans-serif;
-  font-weight: ${({ theme }) => theme.fontWeights.semiBold};
+  font-weight: ${({ theme }) => theme.fontWeights.semibold};
   font-size: 22px;
   line-height: 27px;
 `;
@@ -34,6 +34,7 @@ export const SubText = styled.span`
   font-size: 20px;
   line-height: 24px;
 `;
+
 export const ButtonText = styled.span`
   font-family: ${({ theme }) => theme.fonts.inter}, sans-serif;
   font-weight: ${({ theme }) => theme.fontWeights.bold};
