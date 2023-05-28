@@ -15,11 +15,6 @@ import {
   GenreSkeletonWrapper,
 } from "./styled";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/pagination";
-import "react-loading-skeleton/dist/skeleton.css";
-
 function Genres() {
   const [genres, setGenres] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -46,8 +41,6 @@ function Genres() {
 
     loadData();
   }, []);
-
-  console.log(genres);
 
   return (
     <Wrapper>
