@@ -9,7 +9,7 @@ export const StyledButton = styled.button`
   width: ${(props) => props.width || 20}px;
   height: ${(props) => props.height || 20}px;
   cursor: pointer;
-  transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out, background-color 0.1s ease-in-out;
 
   ${(props) =>
     props.withBackground &&
