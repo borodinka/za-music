@@ -5,6 +5,8 @@ export const Wrapper = styled.section`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 35px;
+  margin-bottom: 35px;
 `;
 
 export const TitleRow = styled.div`
@@ -18,6 +20,13 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 10px;
+`;
+
+export const GenresWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
 `;
 
 export const Button = styled(IconButton)`
