@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { SectionSubtitle } from "components/ui/Typography";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -23,4 +24,8 @@ export const Wrapper = styled.div`
     background-position: center center;
     border-radius: 25px;
   }
+`;
+
+export const GenreName = styled(SectionSubtitle)`
+  z-index: ${({ theme }) => theme.zIndex["10"]};
 `;

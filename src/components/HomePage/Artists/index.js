@@ -10,7 +10,7 @@ function Artists({ isLoading, artists }) {
     <Wrapper>
       <ArtistsWrapper>
         {isLoading &&
-          [1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
+          [...Array(8).keys()].map((num) => (
             <ArtistLoaderWrapper key={num}>
               <Skeleton
                 wrapper={ArtistSkeletonWrapper}

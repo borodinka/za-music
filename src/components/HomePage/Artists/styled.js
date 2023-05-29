@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 export const ArtistsWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
   width: 100%;
   min-height: 116px;
 `;

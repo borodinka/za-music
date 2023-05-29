@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Hero, Genres, Artists } from "components/HomePage";
 import { ContentWrapper, GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
 import { SectionTitle } from "components/ui/Typography";
@@ -7,6 +6,8 @@ import { SectionTitle } from "components/ui/Typography";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
+import { toast } from "react-toastify";
+import { loadCharts } from "services/api";
 
 function Home() {
   const [chart, setChart] = useState();
@@ -14,10 +15,15 @@ function Home() {
 
   useEffect(() => {
     const loadData = async () => {
-      setIsLoading(true);
-      const data = await axios.get("/chart");
-      setChart(data.data);
-      setIsLoading(false);
+      try {
+        setIsLoading(true);
+        const data = await loadCharts();
+        setChart(data);
+      } catch (err) {
+        toast.error(err.message);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     loadData();
