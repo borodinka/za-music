@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { loadCharts } from "services/api";
 import { Hero, Genres, Artists } from "components/HomePage";
+import TracksTable from "components/TracksTable";
 import { ContentWrapper, GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
 import { SectionTitle } from "components/ui/Typography";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-import { toast } from "react-toastify";
-import { loadCharts } from "services/api";
 
 function Home() {
   const [chart, setChart] = useState();
@@ -37,12 +38,12 @@ function Home() {
         <div>
           <GreyTitle>Global</GreyTitle>
           <SectionTitle>Trending right now</SectionTitle>
-          <div>Songs table</div>
+          <TracksTable tracks={chart?.tracks?.data} />
         </div>
         <StyledAside>
           <GreyTitle>Global</GreyTitle>
           <SectionTitle>Top Artists</SectionTitle>
-          <Artists isLoading={isLoading} artists={chart?.artists.data} />
+          <Artists isLoading={isLoading} artists={chart?.artists?.data} />
         </StyledAside>
       </TrendsAndArtistsSection>
     </ContentWrapper>
