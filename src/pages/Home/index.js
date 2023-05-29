@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Hero, Genres, Artists } from "components/HomePage";
-import { ContentWrapper, GreyTitle, TrendsAndArtistsSection } from "./styled";
+import { ContentWrapper, GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
 import { SectionTitle } from "components/ui/Typography";
 
 // Import Swiper styles
@@ -33,11 +33,11 @@ function Home() {
           <SectionTitle>Trending right now</SectionTitle>
           <div>Songs table</div>
         </div>
-        <aside>
+        <StyledAside>
           <GreyTitle>Global</GreyTitle>
           <SectionTitle>Top Artists</SectionTitle>
           <Artists isLoading={isLoading} artists={chart?.artists.data} />
-        </aside>
+        </StyledAside>
       </TrendsAndArtistsSection>
     </ContentWrapper>
   );

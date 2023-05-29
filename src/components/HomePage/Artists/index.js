@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import Skeleton from "react-loading-skeleton";
 import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Wrapper, ArtistSkeletonWrapper, ArtistsWrapper } from "./styled";
+import { Wrapper, ArtistSkeletonWrapper, ArtistsWrapper, ArtistLoaderWrapper } from "./styled";
 import ArtistCard from "./ArtistCard";
 
 function Artists({ isLoading, artists }) {
@@ -11,14 +11,17 @@ function Artists({ isLoading, artists }) {
       <ArtistsWrapper>
         {isLoading &&
           [1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-            <Skeleton
-              wrapper={ArtistSkeletonWrapper}
-              style={{ maxWidth: "100%" }}
-              key={num}
-              height={116}
-              width={220}
-              borderRadius={25}
-            />
+            <ArtistLoaderWrapper key={num}>
+              <Skeleton
+                wrapper={ArtistSkeletonWrapper}
+                style={{ maxWidth: "100%" }}
+                key={num}
+                height={95}
+                width={95}
+                circle
+              />
+              <Skeleton height={27} />
+            </ArtistLoaderWrapper>
           ))}
         <Swiper slidesPerView="auto" spaceBetween={20} modules={[Pagination]}>
           {!isLoading &&
