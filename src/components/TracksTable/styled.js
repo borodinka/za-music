@@ -13,7 +13,36 @@ export const TableHead = styled.thead`
 `;
 
 export const TableHeading = styled.th`
-  padding: 30px 20px 30px 0;
+  padding: 30px 20px 30px ${(props) => (props.first ? "20px" : "0")};
+`;
+
+export const TrackRow = styled.tr`
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  border-radius: 15px;
+
+  &:hover {
+    .text {
+      display: none;
+    }
+
+    .icon {
+      display: block;
+    }
+
+    background-color: ${({ theme }) => theme.colors.lightWhite};
+  }
+
+  td:first-child {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 15px;
+  }
+
+  td:last-child {
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
 `;
 
 export const TableHeadingTime = styled(TableHeading)`
@@ -21,7 +50,7 @@ export const TableHeadingTime = styled(TableHeading)`
 `;
 
 export const TableData = styled.td`
-  padding: 15px 20px 15px 0;
+  padding: 10px 20px 10px 0;
 `;
 
 export const TrackInfo = styled(TableData)`
@@ -75,4 +104,10 @@ export const Line = styled.td`
     #c6c6c6 50.54%,
     rgba(198, 198, 198, 0) 98.02%
   );
+`;
+
+export const IconWrapper = styled.div`
+  display: none;
+  width: 20px;
+  height: 20px;
 `;

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { SubText } from "components/ui/Typography";
-import { Heart } from "components/ui/Icons";
+import { Heart, Play } from "components/ui/Icons";
 import { formatSecondsToMSS } from "utils/time";
 import {
   Table,
@@ -16,15 +16,17 @@ import {
   StyledIconButton,
   TableHeadingTime,
   Line,
+  TrackRow,
+  IconWrapper,
 } from "./styled";
 
 function TracksTable({ tracks }) {
   console.log(tracks);
   return (
-    <Table>
+    <Table cellSpacing={0}>
       <TableHead>
         <tr>
-          <TableHeading>
+          <TableHeading first>
             <SubText>#</SubText>
           </TableHeading>
           <TableHeading>
@@ -46,9 +48,12 @@ function TracksTable({ tracks }) {
           <Line colSpan={5} />
         </tr>
         {tracks?.map((track, index) => (
-          <tr key={track.id}>
+          <TrackRow key={track.id}>
             <TableData>
-              <SongNumberText>{String(index + 1).padStart(2, "0")}</SongNumberText>
+              <SongNumberText className="text">{String(index + 1).padStart(2, "0")}</SongNumberText>
+              <IconWrapper className="icon">
+                <Play />
+              </IconWrapper>
             </TableData>
             <TrackInfo>
               <TrackInfoImage src={track.album.cover} alt={`${track.album.name}'s cover`} />
@@ -68,7 +73,7 @@ function TracksTable({ tracks }) {
                 <Heart />
               </StyledIconButton>
             </TableData>
-          </tr>
+          </TrackRow>
         ))}
       </tbody>
     </Table>
