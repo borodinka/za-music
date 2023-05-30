@@ -1,6 +1,6 @@
 import IconButton from "components/ui/IconButton";
 import { SubText, Text } from "components/ui/Typography";
-import { styled } from "styled-components";
+import styled from "styled-components";
 
 export const Table = styled.table`
   width: 100%;

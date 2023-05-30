@@ -3,8 +3,9 @@ import { toast } from "react-toastify";
 import { loadCharts } from "services/api";
 import { Hero, Genres, Artists } from "components/HomePage";
 import TracksTable from "components/TracksTable";
-import { ContentWrapper, GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
+import { GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
 import { SectionTitle } from "components/ui/Typography";
+import { ContentWrapper } from "components/Layout";
 
 // Import Swiper styles
 import "swiper/css";
