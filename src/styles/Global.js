@@ -39,4 +39,9 @@ export const GlobalStyles = styled.createGlobalStyle`
       scroll-behavior: auto !important;
     }
   }
+
+  /* Overwrite rc-slider library default styles */
+  .rc-slider-handle-dragging {
+    box-shadow: 0 0 0 5px ${({ theme }) => theme.colors.white} !important;
+  }
 `;
