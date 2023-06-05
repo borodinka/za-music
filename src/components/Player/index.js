@@ -1,8 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
+import { PlayerContext, PlayerDispatchContext } from "context/playerContext";
+import { actions } from "context/actions";
 import { ContentWrapper } from "components/Layout";
 import { theme } from "styles/Theme";
-import { Text } from "components/ui/Typography";
 import {
   ArtistName,
   ControlsWrapper,
@@ -11,14 +12,13 @@ import {
   TrackInfoTextWrapper,
   TrackInfoWrapper,
   TrackTime,
+  TrackTitle,
   VolumeWrapper,
   Wrapper,
 } from "./styled";
 import IconButton from "components/ui/IconButton";
 import { formatSecondsToMSS } from "utils/time";
 import { Pause, Play, SkipLeft, SkipRight, Volume } from "components/ui/Icons";
-import { PlayerContext, PlayerDispatchContext } from "context/playerContext";
-import { actions } from "context/actions";
 
 function Player() {
   const dispatch = useContext(PlayerDispatchContext);
@@ -90,7 +90,7 @@ function Player() {
         <TrackInfoWrapper>
           <TrackImage src={track.album.cover} alt={`${track?.album.title}'s cover`} />
           <TrackInfoTextWrapper>
-            <Text>{track.title}</Text>
+            <TrackTitle>{track.title}</TrackTitle>
             <ArtistName>{track.title}</ArtistName>
           </TrackInfoTextWrapper>
         </TrackInfoWrapper>
