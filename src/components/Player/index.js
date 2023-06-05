@@ -62,11 +62,15 @@ function Player() {
     setPlayerState((prev) => ({ ...prev, volume: newVolume }));
   };
 
+  const handleNextSong = () => dispatch({ type: actions.NEXT_SONG });
+
+  const handlePrevSong = () => dispatch({ type: actions.PREV_SONG });
+
   useEffect(() => {
     if (!audioRef?.current) return;
 
     if (isPlaying) {
-      audioRef.current.play();
+      audioRef.current.play().catch((err) => console.log(err));
     } else {
       audioRef.current.pause();
     }
@@ -86,6 +90,7 @@ function Player() {
           onTimeUpdate={onTimeUpdate}
           onLoadedMetadata={onTimeUpdate}
           hidden
+          onEnded={handleNextSong}
         />
         <TrackInfoWrapper>
           <TrackImage src={track.album.cover} alt={`${track?.album.title}'s cover`} />
@@ -95,13 +100,13 @@ function Player() {
           </TrackInfoTextWrapper>
         </TrackInfoWrapper>
         <ControlsWrapper>
-          <IconButton>
+          <IconButton onClick={handlePrevSong}>
             <SkipLeft />
           </IconButton>
           <IconButton onClick={togglePlay} width={55} height={55} withBackground>
             {isPlaying ? <Pause /> : <Play />}
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleNextSong}>
             <SkipRight />
           </IconButton>
         </ControlsWrapper>
