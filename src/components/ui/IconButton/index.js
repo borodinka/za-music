@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
 import { StyledButton } from "./styled";
 
-function IconButton(props) {
-  return <StyledButton {...props}>{props.children}</StyledButton>;
+function IconButton({ withBackground, ...props }) {
+  return (
+    <StyledButton bg={withBackground ? 1 : 0} {...props}>
+      {props.children}
+    </StyledButton>
+  );
 }
 
 IconButton.propTypes = {

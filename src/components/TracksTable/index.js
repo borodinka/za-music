@@ -28,7 +28,7 @@ function TracksTable({ tracks, isLoading }) {
     <Table cellSpacing={0}>
       <TableHead>
         <tr>
-          <TableHeading first>
+          <TableHeading first={1}>
             <SubText>{isLoading ? <Skeleton width={25} /> : "#"}</SubText>
           </TableHeading>
           <TableHeading>
