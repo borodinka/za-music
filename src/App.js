@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { ToastContainer } from "react-toastify";
@@ -9,6 +10,7 @@ import Home from "pages/Home";
 import { GlobalStyles } from "styles/Global";
 import Header from "components/Header";
 import Player from "components/Player";
+import Search from "pages/Search";
 
 // Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
@@ -32,7 +34,10 @@ function App() {
           >
             <GlobalStyles />
             <Header />
-            <Home />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+            </Routes>
             <Player />
             <ToastContainer
               position="bottom-left"
