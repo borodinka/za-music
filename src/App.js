@@ -7,10 +7,9 @@ import { initialState, playerReducer } from "context/playerReducer";
 import { PlayerContext, PlayerDispatchContext } from "context/playerContext";
 import { theme } from "styles/Theme";
 import Home from "pages/Home";
-import { GlobalStyles } from "styles/Global";
-import Header from "components/Header";
-import Player from "components/Player";
+import Layout from "components/Layout";
 import Search from "pages/Search";
+import { GlobalStyles } from "styles/Global";
 
 // Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
@@ -33,12 +32,12 @@ function App() {
             highlightColor={theme.colors.lightWhite}
           >
             <GlobalStyles />
-            <Header />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/search" element={<Search />} />
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/search" element={<Search />} />
+              </Route>
             </Routes>
-            <Player />
             <ToastContainer
               position="bottom-left"
               autoClose={5000}
