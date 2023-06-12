@@ -7,6 +7,7 @@ import { initialState, playerReducer } from "context/playerReducer";
 import { PlayerContext, PlayerDispatchContext } from "context/playerContext";
 import { theme } from "styles/Theme";
 import Home from "pages/Home";
+import Error from "pages/Error";
 import Layout from "components/Layout";
 import Search from "pages/Search";
 import { GlobalStyles } from "styles/Global";
@@ -36,6 +37,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="*" element={<Error />} />
               </Route>
             </Routes>
             <ToastContainer
