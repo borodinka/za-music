@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
@@ -21,9 +21,14 @@ import "react-toastify/dist/ReactToastify.css";
 
 // Import rc-slider css
 import "rc-slider/assets/index.css";
+import { setStorageValue } from "services/localStorage";
 
 function App() {
   const [state, dispatch] = useReducer(playerReducer, initialState);
+
+  useEffect(() => {
+    setStorageValue("savedTrackIds", state.savedTrackIds);
+  }, [state.savedTrackIds]);
 
   return (
     <PlayerContext.Provider value={state}>
