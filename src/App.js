@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
@@ -33,13 +34,15 @@ function App() {
             highlightColor={theme.colors.lightWhite}
           >
             <GlobalStyles />
-            <Routes>
-              <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="/search" element={<Search />} />
-                <Route path="*" element={<Error />} />
-              </Route>
-            </Routes>
+            <ErrorBoundary fallback={<Error isErrorPage />}>
+              <Routes>
+                <Route path="/" element={<Layout />}>
+                  <Route index element={<Home />} />
+                  <Route path="/search" element={<Search />} />
+                  <Route path="*" element={<Error />} />
+                </Route>
+              </Routes>
+            </ErrorBoundary>
             <ToastContainer
               position="bottom-left"
               autoClose={5000}
