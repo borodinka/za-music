@@ -47,7 +47,14 @@ function TrackRow({ track, index, onClick, isPlaying, handleSaveTrackClick, isSa
       </TableData>
       <TableData>
         {track ? (
-          <StyledIconButton width={25} height={25} onClick={() => handleSaveTrackClick(track.id)}>
+          <StyledIconButton
+            width={25}
+            height={25}
+            onClick={(event) => {
+              event.stopPropagation();
+              handleSaveTrackClick(track.id);
+            }}
+          >
             <Heart fill={isSaved ? theme.colors.white : "none"} />
           </StyledIconButton>
         ) : (
