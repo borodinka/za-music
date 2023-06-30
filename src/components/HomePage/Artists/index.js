@@ -4,8 +4,12 @@ import { Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Wrapper, ArtistSkeletonWrapper, ArtistsWrapper, ArtistLoaderWrapper } from "./styled";
 import ArtistCard from "./ArtistCard";
+import { useWindowSize } from "hooks/useWindowSize";
+import { breakpoints } from "styles/BreakPoints";
 
 function Artists({ isLoading, artists }) {
+  const { width } = useWindowSize();
+  const isMobileLayout = width < breakpoints.md;
   return (
     <Wrapper>
       <ArtistsWrapper>
@@ -16,11 +20,11 @@ function Artists({ isLoading, artists }) {
                 wrapper={ArtistSkeletonWrapper}
                 style={{ maxWidth: "100%" }}
                 key={num}
-                height={95}
-                width={95}
+                height={isMobileLayout ? 75 : 95}
+                width={isMobileLayout ? 75 : 95}
                 circle
               />
-              <Skeleton height={27} />
+              <Skeleton height={isMobileLayout ? 19 : 27} />
             </ArtistLoaderWrapper>
           ))}
         <Swiper slidesPerView="auto" spaceBetween={20} modules={[Pagination]}>

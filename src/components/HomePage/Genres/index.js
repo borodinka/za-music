@@ -23,6 +23,7 @@ function Genres() {
   const { width } = useWindowSize();
   const [genres, setGenres] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const isMobileLayout = width < breakpoints.md;
 
   const sliderRef = useRef(null);
 
@@ -72,15 +73,15 @@ function Genres() {
               wrapper={GenreSkeletonWrapper}
               style={{ maxWidth: "100%" }}
               key={num}
-              height={width < breakpoints.md ? 95 : 116}
-              width={width < breakpoints.md ? 137 : 220}
+              height={isMobileLayout ? 95 : 116}
+              width={isMobileLayout ? 137 : 220}
               borderRadius={25}
             />
           ))}
         <Swiper
           ref={sliderRef}
           slidesPerView="auto"
-          spaceBetween={width < breakpoints.md ? 9 : 20}
+          spaceBetween={isMobileLayout ? 9 : 20}
           modules={[Pagination]}
         >
           {!isLoading &&
