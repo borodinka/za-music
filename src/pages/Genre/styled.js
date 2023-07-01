@@ -12,4 +12,21 @@ export const Wrapper = styled.div`
   ${device.lg} {
     padding-bottom: calc(${MOBILE_PLAYER_HEIGHT}px + 50px);
   }
+
+  ${device.md} {
+    gap: 45px;
+    padding-top: 28px;
+  }
+`;
+
+export const TextWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const SongsCountWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
 `;
