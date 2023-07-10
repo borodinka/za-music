@@ -1,7 +1,7 @@
 import { MOBILE_PLAYER_HEIGHT, PLAYER_HEIGHT } from "common/constants";
 import { SubText, Text } from "components/ui/Typography";
-import styled from "styled-components";
 import { device } from "styles/BreakPoints";
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -16,6 +16,8 @@ export const Wrapper = styled.div`
 
   ${device.lg} {
     height: ${MOBILE_PLAYER_HEIGHT}px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
   }
 `;
 
@@ -24,6 +26,14 @@ export const TrackInfoWrapper = styled.div`
   gap: 25px;
   align-items: center;
   min-width: 400px;
+
+  @media (max-width: 1400px) {
+    min-width: 280px;
+  }
+
+  ${device.lg} {
+    gap: 15px;
+  }
 `;
 
 export const TrackInfoTextWrapper = styled.div`
@@ -31,12 +41,21 @@ export const TrackInfoTextWrapper = styled.div`
   gap: 10px;
   flex-direction: column;
   padding-right: 15px;
+
+  ${device.lg} {
+    gap: 2px;
+  }
 `;
 
 export const TrackImage = styled.img`
   height: 65px;
   width: 65px;
   border-radius: 15px;
+
+  ${device.md} {
+    height: 45px;
+    width: 45px;
+  }
 `;
 
 export const TrackTitle = styled(Text)`
@@ -62,11 +81,22 @@ export const ControlsWrapper = styled.div`
   gap: 34px;
 `;
 
+export const MobileTrackRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
 export const ProgressWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: 60px;
   width: 100%;
+
+  ${device.lg} {
+    margin-left: 0;
+  }
 `;
 
 export const VolumeWrapper = styled.div`
@@ -75,10 +105,19 @@ export const VolumeWrapper = styled.div`
   gap: 22px;
   margin-left: 130px;
   min-width: 180px;
+
+  ${device.xl} {
+    margin-left: 60px;
+  }
 `;
 
 export const TrackTime = styled(SubText)`
   width: 80px;
   margin: 0 20px;
   color: ${(props) => (props.grey ? props.theme.colors.secondaryGrey : "inherit")};
+
+  ${device.lg} {
+    margin: ${(props) => (props.last ? "0 0 0 20px" : 0)};
+    text-align: ${(props) => (props.last ? "right" : "inherit")};
+  }
 `;
