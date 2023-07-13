@@ -56,3 +56,7 @@ export const SongsCountWrapper = styled.div`
   gap: 12px;
   color: ${({ theme }) => theme.colors.secondaryGrey};
 `;
+
+export const ArtistImageLoaderWrapper = styled.div`
+  display: flex;
+`;

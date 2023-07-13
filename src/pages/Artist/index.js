@@ -6,10 +6,20 @@ import { loadArtist } from "services/api";
 import { MainTitle, SectionTitle, SmallText } from "components/ui/Typography";
 import { Music } from "components/ui/Icons";
 import TracksTable from "components/TracksTable";
-import { ArtistImage, ArtistInfoWrapper, SongsCountWrapper, TextWrapper, Wrapper } from "./styled";
+import {
+  ArtistImage,
+  ArtistImageLoaderWrapper,
+  ArtistInfoWrapper,
+  SongsCountWrapper,
+  TextWrapper,
+  Wrapper,
+} from "./styled";
 import { theme } from "styles/Theme";
+import { useWindowSize } from "hooks/useWindowSize";
+import { breakpoints } from "styles/BreakPoints";
 
 function Artist() {
+  const { width } = useWindowSize();
   const { artistId } = useParams();
   const [artist, setArtist] = useState();
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +43,16 @@ function Artist() {
   return (
     <Wrapper>
       <ArtistInfoWrapper>
-        <ArtistImage src={artist?.artist?.picture_big} alt={`${artist?.artist?.name}'s photo`} />
+        {artist ? (
+          <ArtistImage src={artist?.artist?.picture_big} alt={`${artist?.artist?.name}'s photo`} />
+        ) : (
+          <Skeleton
+            width={width < breakpoints.md ? "100%" : 350}
+            height={width < breakpoints.md ? 176 : 350}
+            borderRadius={25}
+            wrapper={ArtistImageLoaderWrapper}
+          />
+        )}
         <TextWrapper>
           <MainTitle>{artist?.artist?.name || <Skeleton width={200} />}</MainTitle>
           <SongsCountWrapper>
