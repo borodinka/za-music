@@ -167,7 +167,7 @@ function PlayerLayout({
           <TrackInfoWrapper>
             <TrackInfoTextWrapper>
               <TrackTitle>{track.title}</TrackTitle>
-              <ArtistName>{track.title}</ArtistName>
+              <ArtistName>{track.artist.name}</ArtistName>
             </TrackInfoTextWrapper>
           </TrackInfoWrapper>
         </MobileTrackRow>
@@ -227,7 +227,7 @@ function PlayerLayout({
             <TrackImage src={track.album.cover} alt={`${track?.album.title}'s cover`} />
             <TrackInfoTextWrapper>
               <TrackTitle>{track.title}</TrackTitle>
-              <ArtistName>{track.title}</ArtistName>
+              <ArtistName>{track.artist.name}</ArtistName>
             </TrackInfoTextWrapper>
           </TrackInfoWrapper>
           <IconButton
@@ -268,7 +268,7 @@ function PlayerLayout({
         <TrackImage src={track.album.cover} alt={`${track?.album.title}'s cover`} />
         <TrackInfoTextWrapper>
           <TrackTitle>{track.title}</TrackTitle>
-          <ArtistName>{track.title}</ArtistName>
+          <ArtistName>{track.artist.name}</ArtistName>
         </TrackInfoTextWrapper>
       </TrackInfoWrapper>
       <ControlsWrapper>
