@@ -56,7 +56,7 @@ function useDebounceLoadData(searchQuery) {
     if (searchQuery) {
       clearTimeout(fetchTimeout.current);
 
-      fetchTimeout.current = setTimeout(() => loadData(), 500);
+      fetchTimeout.current = setTimeout(loadData, 500);
     } else {
       setData(null);
     }
