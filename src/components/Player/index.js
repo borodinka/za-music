@@ -28,88 +28,22 @@ import { useWindowSize } from "hooks/useWindowSize";
 import { breakpoints } from "styles/BreakPoints";
 
 function Player() {
-  const location = useLocation();
   const { width } = useWindowSize();
-  const dispatch = useContext(PlayerDispatchContext);
-  const { track, isPlaying } = useContext(PlayerContext);
-  const [playerState, setPlayerState] = useState({
-    currentTime: 0,
-    duration: 0,
-    volume: 0.7,
-    isOpened: false,
-  });
-  const audioRef = useRef();
 
-  const togglePlay = () => dispatch({ type: actions.TOGGLE_PLAY });
-
-  const toggleOpen = () => {
-    if (width > breakpoints.lg && !playerState.isOpened) return;
-
-    setPlayerState((prev) => ({ ...prev, isOpened: !prev.isOpened }));
-  };
-
-  const toggleVolume = () => {
-    const newVolume = playerState.volume > 0 ? 0 : 1;
-    onVolumeChange(newVolume);
-  };
-
-  const onTimeUpdate = () => {
-    if (!audioRef?.current) return;
-
-    const currentTime = audioRef.current.currentTime;
-    const duration = audioRef.current.duration;
-
-    setPlayerState((prev) => ({ ...prev, currentTime, duration }));
-  };
-
-  const onTrackTimeDrag = (newTime) => {
-    if (!audioRef?.current) return;
-
-    audioRef.current.currentTime = newTime;
-
-    setPlayerState((prev) => ({ ...prev, currentTime: newTime }));
-  };
-
-  const onVolumeChange = (newVolume) => {
-    if (!audioRef?.current) return;
-
-    audioRef.current.volume = newVolume;
-
-    setPlayerState((prev) => ({ ...prev, volume: newVolume }));
-  };
-
-  const handleNextSong = () => dispatch({ type: actions.NEXT_SONG });
-
-  const handlePrevSong = () => dispatch({ type: actions.PREV_SONG });
-
-  useEffect(() => {
-    if (!audioRef?.current) return;
-
-    if (isPlaying) {
-      audioRef.current.play().catch((err) => console.log(err));
-    } else {
-      audioRef.current.pause();
-    }
-  }, [audioRef, track, isPlaying]);
-
-  useEffect(() => {
-    if (playerState.isOpened) toggleOpen();
-  }, [location]);
-
-  useEffect(() => {
-    if (playerState.isOpened) {
-      document.body.style.overflow = "hidden";
-      window.scroll(0, 0);
-    } else {
-      document.body.style.overflow = "scroll";
-    }
-  }, [playerState.isOpened]);
-
-  useEffect(() => {
-    if (width > breakpoints.lg && playerState.isOpened) {
-      toggleOpen();
-    }
-  }, [width]);
+  const {
+    togglePlay,
+    toggleOpen,
+    toggleVolume,
+    onTimeUpdate,
+    onTrackTimeDrag,
+    onVolumeChange,
+    handleNextSong,
+    handlePrevSong,
+    playerState,
+    audioRef,
+    isPlaying,
+    track,
+  } = usePlayer({ width });
 
   if (!track) {
     return null;
@@ -315,6 +249,103 @@ function PlayerLayout({
       </VolumeWrapper>
     </ContentWrapper>
   );
+}
+
+function usePlayer({ width }) {
+  const location = useLocation();
+  const dispatch = useContext(PlayerDispatchContext);
+  const { track, isPlaying } = useContext(PlayerContext);
+  const [playerState, setPlayerState] = useState({
+    currentTime: 0,
+    duration: 0,
+    volume: 0.7,
+    isOpened: false,
+  });
+  const audioRef = useRef();
+
+  const togglePlay = () => dispatch({ type: actions.TOGGLE_PLAY });
+
+  const toggleOpen = () => {
+    if (width > breakpoints.lg && !playerState.isOpened) return;
+
+    setPlayerState((prev) => ({ ...prev, isOpened: !prev.isOpened }));
+  };
+
+  const toggleVolume = () => {
+    const newVolume = playerState.volume > 0 ? 0 : 1;
+    onVolumeChange(newVolume);
+  };
+
+  const onTimeUpdate = () => {
+    if (!audioRef?.current) return;
+
+    const currentTime = audioRef.current.currentTime;
+    const duration = audioRef.current.duration;
+
+    setPlayerState((prev) => ({ ...prev, currentTime, duration }));
+  };
+
+  const onTrackTimeDrag = (newTime) => {
+    if (!audioRef?.current) return;
+
+    audioRef.current.currentTime = newTime;
+
+    setPlayerState((prev) => ({ ...prev, currentTime: newTime }));
+  };
+
+  const onVolumeChange = (newVolume) => {
+    if (!audioRef?.current) return;
+
+    audioRef.current.volume = newVolume;
+
+    setPlayerState((prev) => ({ ...prev, volume: newVolume }));
+  };
+
+  const handleNextSong = () => dispatch({ type: actions.NEXT_SONG });
+
+  const handlePrevSong = () => dispatch({ type: actions.PREV_SONG });
+
+  useEffect(() => {
+    if (!audioRef?.current) return;
+
+    if (isPlaying) {
+      audioRef.current.play().catch((err) => console.log(err));
+    } else {
+      audioRef.current.pause();
+    }
+  }, [audioRef, track, isPlaying]);
+
+  useEffect(() => {
+    if (playerState.isOpened) toggleOpen();
+  }, [location]);
+
+  useEffect(() => {
+    if (playerState.isOpened) {
+      document.body.style.overflow = "hidden";
+      window.scroll(0, 0);
+    } else {
+      document.body.style.overflow = "scroll";
+    }
+  }, [playerState.isOpened]);
+
+  if (width > breakpoints.lg && playerState.isOpened) {
+    toggleOpen();
+  }
+
+  return {
+    togglePlay,
+    toggleOpen,
+    toggleVolume,
+    onTimeUpdate,
+    onTrackTimeDrag,
+    onVolumeChange,
+    handleNextSong,
+    handlePrevSong,
+    playerState,
+    audioRef,
+    isPlaying,
+    track,
+  };
 }
 
 PlayerLayout.propTypes = {
